@@ -45,8 +45,8 @@
             return;
         }
 
-        if (scalarRadio.checked && (scalarValue < 0 || scalarValue > 5)) {
-            alert("Scalar value must be between 0 and 5 inclusive!");
+        if (scalarRadio.checked && (scalarValue < -5 || scalarValue > 5)) {
+            alert("Scalar value must be between -5 and 5 inclusive!");
             return;
         }
 
