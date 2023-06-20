@@ -1,0 +1,70 @@
+/* CSS styles for the matrix containers and elements */
+
+
+/* The container for the matrices */
+
+.matrix-container {
+    display: flex;
+    justify-content: center;
+}
+
+
+/* Individual matrix container */
+
+.matrix {
+    margin: 0 30px;
+}
+
+
+/* Hidden class for hiding elements */
+
+.hidden {
+    display: none;
+}
+
+
+/* Table styles for the matrices */
+
+table {
+    border-collapse: collapse;
+    border-top: none;
+    border-bottom: none;
+    border-left: 3px solid black;
+    border-right: 3px solid black;
+    border-top-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+
+
+/* Remove left border for first column */
+
+table th:first-child,
+table td:first-child {
+    border-left: none;
+}
+
+
+/* Remove right border for last column */
+
+table th:last-child,
+table td:last-child {
+    border-right: none;
+}
+
+
+/* Table header styles */
+
+table th {
+    border-top: none;
+    background-color: #f2f2f2;
+    padding: 5px;
+}
+
+
+/* Table cell styles */
+
+table td {
+    border-top: none;
+    text-align: center;
+    padding: 5px;
+}
