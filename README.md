@@ -7,7 +7,7 @@ This repository contains two assignments:
 In this assignment, you will use HTML, CSS, and JavaScript to create an animated car that moves on the screen. You can explore different techniques to make the car move smoothly and add visual effects to enhance the animation.
 
 To view the implementation, please visit the following link:
-[Assignment 1 - Animated Car](https://deromal.github.io/Assignment/assignment1.html)
+[Assignment 1 - Animated Car](https://deromal.github.io/02/)
 
 ## Assignment 2: Matrix Operations
 
@@ -19,7 +19,7 @@ Operation 2: Multiplication of two matrices.
 You will create a user interface where the user can input the matrices and scalar value, and then perform the operations to display the results.
 
 To view the implementation, please visit the following link:
-[Assignment 2 - Matrix Operations](https://deromal.github.io/Assignment/assignment2.html)
+[Assignment 2 - Matrix Operations](https://deromal.github.io/02/)
 
 Feel free to explore and experiment with these assignments!
 
