@@ -127,10 +127,18 @@
                 input.type = 'number';
                 input.min = -9;
                 input.max = 9;
+                input.addEventListener('input', function() {
+                    const value = parseInt(this.value);
+                    if (value < -9 || value > 9) {
+                        this.value = '';
+                        alert('Matrix value must be between -9 and 9 inclusive!');
+                    }
+                });
                 cell.appendChild(input);
             }
         }
     }
+
 
     // Get the matrix values from the input fields
     function getMatrixValues(tableId) {
