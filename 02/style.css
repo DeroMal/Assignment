@@ -1,5 +1,13 @@
 /* CSS styles for the matrix containers and elements */
 
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
 
 /* The container for the matrices */
 
@@ -13,6 +21,17 @@
 
 .matrix {
     margin: 0 30px;
+}
+
+#matrix1,
+#matrix2,
+#result {
+    display: inline-block;
+    border-width: 0 5px;
+    border-style: solid;
+    border-color: black;
+    border-radius: 20px;
+    padding: 10px;
 }
 
 
