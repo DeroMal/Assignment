@@ -1,10 +1,12 @@
     // Get references to the HTML elements
-    const scalarRadio = document.getElementById('scalar');
-    const matrixRadio = document.getElementById('matrix');
+    const operationSelect = document.getElementById('operation');
     const matrix1RowsInput = document.getElementById('matrix1Rows');
     const matrix1ColumnsInput = document.getElementById('matrix1Columns');
     const matrix2RowsInput = document.getElementById('matrix2Rows');
     const matrix2ColumnsInput = document.getElementById('matrix2Columns');
+    const displayalert1 = document.getElementById('alert1');
+    const displayalert2 = document.getElementById('alert2');
+    // const displayalertContainer = document.getElementsByClassName('error');
     const scalarValueInput = document.getElementById('scalarValue');
     const submitBtn = document.getElementById('submitBtn');
     const resetBtn = document.getElementById('resetBtn');
@@ -18,17 +20,26 @@
     const resultContainer = document.getElementById('resultContainer');
     const resultTable = document.getElementById('result');
 
-    // Event listeners for radio buttons
-    scalarRadio.addEventListener('click', function() {
-        matrix2Container.classList.add('hidden');
-        scalarValueInput.disabled = false;
-        operationBtn.textContent = 'Perform Scalar Multiplication';
-    });
+    // matrix2ColumnsInput.disabled = true;
+    // matrix2RowsInput.disabled = true;
+    updateForm();
 
-    matrixRadio.addEventListener('click', function() {
-        matrix2Container.classList.remove('hidden');
-        scalarValueInput.disabled = true;
-        operationBtn.textContent = 'Perform Matrix Multiplication';
+    // // Event listener for the operation drop-down menu
+    function updateForm() {
+        if (operationSelect.value === 'scalar') {
+            matrix2ColumnsInput.disabled = true;
+            matrix2RowsInput.disabled = true;
+            scalarValueInput.disabled = false;
+            operationBtn.textContent = 'Calculate';
+        } else if (operationSelect.value === 'matrix') {
+            matrix2ColumnsInput.disabled = false;
+            matrix2RowsInput.disabled = false;
+            scalarValueInput.disabled = true;
+            operationBtn.textContent = 'Calculate';
+        }
+    }
+    operationSelect.addEventListener('change', function() {
+        updateForm();
     });
 
     // Submit button event listener
@@ -40,25 +51,39 @@
         const scalarValue = parseInt(scalarValueInput.value);
 
         // Validate input values
-        if (matrixRadio.checked && (matrix1Columns !== matrix2Rows)) {
-            alert("Number of columns in Matrix 1 must be equal to the number of rows in Matrix 2!");
+        if (operationSelect.value === 'matrix' && matrix1Columns !== matrix2Rows) {
+            // alert("Number of columns in Matrix 1 must be equal to the number of rows in Matrix 2!");
+            matrix1ColumnsInput.disabled = true;
+            matrix1RowsInput.disabled = true;
+            matrix2ColumnsInput.disabled = true;
+            matrix2RowsInput.disabled = true;
+            scalarValueInput.disabled = true;
+            operationSelect.disabled = true;
+            displayalert1.innerHTML = 'Number of columns in matrix 1 are not equal to the number of rows of matrix 2.<br>Click Reset button and try again.<br><br>';
             return;
         }
 
-        if (scalarRadio.checked && (scalarValue < -5 || scalarValue > 5)) {
-            alert("Scalar value must be between -5 and 5 inclusive!");
+        if (operationSelect.value === 'scalar' && (scalarValue < -5 || scalarValue > 5)) {
+            // alert("Scalar value must be between -5 and 5 inclusive!");
+            matrix1ColumnsInput.disabled = true;
+            matrix1RowsInput.disabled = true;
+            matrix2ColumnsInput.disabled = true;
+            matrix2RowsInput.disabled = true;
+            scalarValueInput.disabled = true;
+            operationSelect.disabled = true;
+            displayalert1.innerHTML = 'Scalar value must be between -5 and 5 inclusive!<br>Click Reset button and try again.<br><br>';
             return;
         }
 
-        // Activate Matrix 2 or Scalar in opertation
-        if (matrixRadio.checked) {
+        // Activate Matrix 2 or Scalar in operation
+        if (operationSelect.value === 'matrix') {
             scalarOp.classList.add('hidden');
             matrix2Op.classList.remove('hidden');
         }
-        if (scalarRadio.checked) {
+        if (operationSelect.value === 'scalar') {
             // Update the table with the scalar value
             const scalarTable = document.getElementById('scalarV');
-            scalarTable.innerHTML = '* ' + scalarValue;
+            scalarTable.innerHTML = 'X ' + "  " + scalarValue;
 
             scalarOp.classList.remove('hidden');
             matrix2Op.classList.add('hidden');
@@ -70,7 +95,7 @@
 
     // Reset button event listener
     resetBtn.addEventListener('click', function() {
-        resetForm();
+        location.reload(); // Refresh the page
     });
 
     // Operation button event listener
@@ -79,16 +104,17 @@
         const matrix2Values = getMatrixValues('matrix2');
 
         let result;
-        if (scalarRadio.checked) {
+        if (operationSelect.value === 'scalar') {
             const scalarValue = parseInt(scalarValueInput.value);
             result = scalarMultiplication(matrix1Values, scalarValue);
-        } else {
+        } else if (operationSelect.value === 'matrix') {
             result = matrixMultiplication(matrix1Values, matrix2Values);
         }
 
         // Display the result
         displayResult(result);
     });
+
 
     // Back button event listener
     backBtn.addEventListener('click', function() {
@@ -105,7 +131,7 @@
     // Display the second page for entering matrix values
     function displayPage2(matrix1Rows, matrix1Columns, matrix2Rows, matrix2Columns) {
         createMatrixInput('matrix1', matrix1Rows, matrix1Columns);
-        if (matrixRadio.checked) {
+        if (operationSelect.value === 'matrix') {
             createMatrixInput('matrix2', matrix2Rows, matrix2Columns);
         }
 
@@ -113,6 +139,7 @@
         page2.classList.remove('hidden');
         resultContainer.classList.add('hidden');
     }
+
 
     // Create the input fields for matrix values
     function createMatrixInput(tableId, rows, columns) {
@@ -129,9 +156,12 @@
                 input.max = 9;
                 input.addEventListener('input', function() {
                     const value = parseInt(this.value);
-                    if (value < -9 || value > 9) {
+                    if (value < -9 || value > 9 || value == 'NaN') {
                         this.value = '';
-                        alert('Matrix value must be between -9 and 9 inclusive!');
+                        // alert('Matrix value must be between -9 and 9 inclusive!');
+                        displayalert2.innerHTML = 'Number must be between -9 and 9 inclusive!';
+                    } else {
+                        displayalert2.innerHTML = "";
                     }
                 });
                 cell.appendChild(input);
@@ -211,7 +241,10 @@
         page1.classList.remove('hidden');
         page2.classList.add('hidden');
         resultContainer.classList.add('hidden');
-        matrix2Container.classList.add('hidden');
+        // matrix2Container.classList.add('hidden');
+        // matrix2ColumnsInput.disabled = true;
+        // matrix2RowsInput.disabled = true;
+
         scalarValueInput.disabled = false;
         matrix1RowsInput.value = '';
         matrix1ColumnsInput.value = '';
@@ -219,4 +252,5 @@
         matrix2ColumnsInput.value = '';
         scalarValueInput.value = '';
         resultTable.innerHTML = '';
+        updateForm();
     }

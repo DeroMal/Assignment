@@ -7,86 +7,99 @@
 </head>
 
 <body>
-    <div id="page1">
-        <h1>Matrix Operations</h1>
+    <div class="container">
+        <div id="page1">
+            <div class="matrix-container">
+                <!-- Matrix 1 input fields -->
+                <div class="matrix">
+                    <label>Matrix 1</label><br><br>
+                    <label for="matrix1Rows">Number of rows:</label>
+                    <input type="number" id="matrix1Rows" min="1" max="10" value="2">
+                    <br><br>
+                    <label for="matrix1Columns">Number of columns:</label>
+                    <input type="number" id="matrix1Columns" min="1" max="10" value="2">
+                </div>
 
-        <!-- Radio buttons for selecting the operation -->
-        <div>
-            <input type="radio" id="scalar" name="operation" checked>
-            <label for="scalar">Scalar Multiplication</label>
-            <input type="radio" id="matrix" name="operation">
-            <label for="matrix">Matrix Multiplication</label>
+                <!-- Matrix 2 input fields -->
+                <div class="matrix" id="matrix2Container">
+                    <label>Matrix 2</label><br><br>
+                    <label for="matrix2Rows">Number of rows:</label>
+                    <input type="number" id="matrix2Rows" min="1" max="10" value="2">
+                    <br><br>
+                    <label for="matrix2Columns">Number of columns:</label>
+                    <input type="number" id="matrix2Columns" min="1" max="10" value="2">
+                </div>
+            </div>
+            <div class="OpScalar">
+
+                <!-- Scalar value input field -->
+                <br><br>
+                <div class="scalarV">
+                    <label for="scalarValue">Scalar value:</label>
+                    <input type="number" id="scalarValue" min="-5" max="5" value="0">
+                </div>
+
+                <!-- Dropdown for selecting the operation -->
+                <br><br>
+                <div class="opContainer">
+                    <label for="operation">Choose an operation:</label>
+                    <select id="operation" name="operation">
+                    <option value="scalar">Scalar Multiplication</option>
+                    <option value="matrix">Multiplication</option>
+                </select>
+                </div>
+
+                <!-- Error/Alert Notification -->
+                <div class="error">
+                    <div id="alert1" class="hide"></div>
+                </div>
+            </div>
+            <!-- Submit and reset buttons -->
+            <div id="btnContainer" class="btnCont">
+                <button id="submitBtn">Submit</button>
+                <button id="resetBtn">Reset</button>
+            </div>
         </div>
 
-        <!-- Matrix 1 input fields -->
-        <div class="matrix">
-            <h2>Matrix 1</h2>
-            <label for="matrix1Rows">Number of Rows:</label>
-            <input type="number" id="matrix1Rows" min="1" max="10">
-            <br>
-            <label for="matrix1Columns">Number of Columns:</label>
-            <input type="number" id="matrix1Columns" min="1" max="10">
-        </div>
+        <!-- Page 2 for entering matrix values -->
+        <div id="page2" class="hidden">
+            <!-- Matrix container -->
+            <div class="matrix-container">
+                <div class="matrix">
+                    <!-- <label>Matrix 1</label><br><br> -->
+                    <table id="matrix1"></table>
+                </div>
 
-        <!-- Matrix 2 input fields -->
-        <div class="matrix hidden" id="matrix2Container">
-            <h2>Matrix 2</h2>
-            <label for="matrix2Rows">Number of Rows:</label>
-            <input type="number" id="matrix2Rows" min="1" max="10">
-            <br>
-            <label for="matrix2Columns">Number of Columns:</label>
-            <input type="number" id="matrix2Columns" min="1" max="10">
-        </div>
+                <!-- Scalar Op container -->
+                <div class="scalar2 hidden" id="scalarOp">
+                    <!-- <div id="scalarV"></div> -->
+                    <div id="scalarV"></div>
+                </div>
 
-        <!-- Scalar value input field -->
-        <div>
-            <label for="scalarValue">Scalar Value (-5 and 5):</label>
-            <input type="number" id="scalarValue" min="-5" max="5">
-        </div>
+                <!-- Matrix 2 container -->
+                <div class="matrix2 hidden" id="matrix2Op">
+                    <label>X</label>
+                    <table id="matrix2"></table>
+                </div>
 
-        <!-- Submit and reset buttons -->
-        <div id="btnContainer">
-            <button id="submitBtn">Submit</button>
-            <button id="resetBtn">Reset</button>
-        </div>
-    </div>
-
-    <!-- Page 2 for entering matrix values -->
-    <div id="page2" class="hidden">
-        <h1>Enter Matrix Values</h1>
-
-        <!-- Matrix container -->
-        <div class="matrix-container">
-            <div class="matrix">
-                <h2>Matrix 1</h2>
-                <table id="matrix1"></table>
             </div>
 
-            <!-- Scalar Op container -->
-            <div class="scalar2 hidden" id="scalarOp">
-                <h2>Scalar Value</h2>
-                <!-- <div id="scalarV"></div> -->
-                <div id="scalarV"></div>
+            <div class="error">
+                <div id="alert2"></div>
             </div>
 
-            <!-- Matrix 2 container -->
-            <div class="matrix2 hidden" id="matrix2Op">
-                <h2>Matrix 2</h2>
-                <table id="matrix2"></table>
+            <!-- Operation buttons and result container -->
+            <br><br>
+            <div id="operationBtnContainer" class="btnCont">
+                <button id="operationBtn">Calculate</button>
+                <button id="backBtn">Back</button>
             </div>
 
-        </div>
-
-        <!-- Operation buttons and result container -->
-        <div id="operationBtnContainer">
-            <button id="operationBtn">Calculate</button>
-            <button id="backBtn">Back</button>
-        </div>
-
-        <!-- Result container -->
-        <div id="resultContainer" class="hidden">
-            <h2>Result</h2>
-            <table id="result"></table>
+            <!-- Result container -->
+            <br><br>
+            <div id="resultContainer" class="hidden">
+                <table id="result"></table>
+            </div>
         </div>
     </div>
 

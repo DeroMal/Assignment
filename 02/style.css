@@ -4,8 +4,47 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    /* height: 100vh; */
     margin: 0;
+}
+
+
+/* Container style */
+
+.container {
+    justify-content: space-between;
+}
+
+
+/* Page stykes */
+
+#page1,
+#page2 {
+    /* display: flex; */
+    /* justify-content: space-between; */
+    margin: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* text-align: center; */
+}
+
+
+/* Button styleing */
+
+.btnCont {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10%;
+}
+
+button {
+    color: #f2f2f2;
+    border-width: 2px;
+    border-radius: 45%;
+    width: 100px;
+    height: 35px;
+    background-image: linear-gradient(to bottom, rgb(20, 20, 20), rgb(230, 5, 5));
 }
 
 
@@ -13,7 +52,43 @@ body {
 
 .matrix-container {
     display: flex;
+    /* justify-content: center; */
+}
+
+
+/* Scalar Container styles */
+
+.scalarV label {
+    padding-right: 100px;
+}
+
+#scalarV {
+    word-spacing: 20px;
+}
+
+.scalar2,
+.matrix2 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.matrix2 label {
+    padding-right: 20px;
+}
+
+
+/* OpContainer */
+
+.opContainer label {
+    padding-right: 20px;
+}
+
+.OpScalar {
+    /* flex-direction: column;
     justify-content: center;
+    align-items: center; */
+    text-align: center;
 }
 
 
@@ -21,17 +96,35 @@ body {
 
 .matrix {
     margin: 0 30px;
+    /* display: contents;
+    flex-direction: column;
+    gap: 10px; */
+}
+
+.matrix label {
+    padding-right: 15px;
 }
 
 #matrix1,
 #matrix2,
 #result {
     display: inline-block;
-    border-width: 0 5px;
+    border-width: 0 3px;
     border-style: solid;
     border-color: black;
     border-radius: 20px;
-    padding: 10px;
+    margin-top: 10px;
+}
+
+
+/* Results styles */
+
+#resultContainer {
+    /* display: flex; */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 
@@ -39,6 +132,20 @@ body {
 
 .hidden {
     display: none;
+}
+
+
+/* Styles for the alert or error display */
+
+.error {
+    color: rgb(61, 7, 7);
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-weight: bold;
 }
 
 
@@ -50,8 +157,7 @@ table {
     border-bottom: none;
     border-left: 3px solid black;
     border-right: 3px solid black;
-    border-top-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    padding: 20px;
 }
 
 
@@ -75,7 +181,7 @@ table td:last-child {
 
 table th {
     border-top: none;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     padding: 5px;
 }
 
@@ -85,5 +191,5 @@ table th {
 table td {
     border-top: none;
     text-align: center;
-    padding: 5px;
+    padding: 10px;
 }
