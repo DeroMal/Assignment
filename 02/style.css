@@ -41,10 +41,13 @@ body {
 button {
     color: #f2f2f2;
     border-width: 2px;
-    border-radius: 45%;
-    width: 100px;
-    height: 35px;
+    border-radius: 20px;
+    width: 120px;
     background-image: linear-gradient(to bottom, rgb(20, 20, 20), rgb(230, 5, 5));
+    display: inline-block;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
 }
 
 
@@ -193,3 +196,17 @@ table td {
     text-align: center;
     padding: 10px;
 }
+
+
+/* Input styling */
+
+
+/* .scalarV input[type="number"]::-webkit-inner-spin-button,
+.scalarV input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.scalarV input[type="number"] {
+    -moz-appearance: textfield;
+} */
