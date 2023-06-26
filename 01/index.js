@@ -3,7 +3,7 @@
 var p; // shortcut to reference prototypes
 var lib={};var ss={};var img={};
 lib.ssMetadata = [
-		{name:"Moving Car Animation_atlas_1", frames: [[0,770,853,326],[855,770,143,143],[0,0,1366,768]]}
+		{name:"index_atlas_1", frames: [[0,770,853,326],[855,770,143,143],[0,0,1366,768]]}
 ];
 
 
@@ -28,21 +28,21 @@ lib.ssMetadata = [
 
 
 (lib.Asset2carpngcopy = function() {
-	this.initialize(ss["Moving Car Animation_atlas_1"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(0);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.Asset4car = function() {
-	this.initialize(ss["Moving Car Animation_atlas_1"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(1);
 }).prototype = p = new cjs.Sprite();
 
 
 
 (lib.city = function() {
-	this.initialize(ss["Moving Car Animation_atlas_1"]);
+	this.initialize(ss["index_atlas_1"]);
 	this.gotoAndStop(2);
 }).prototype = p = new cjs.Sprite();
 // helper functions:
@@ -152,7 +152,7 @@ if (reversed == null) { reversed = false; }
 
 
 // stage content:
-(lib.MovingCarAnimation = function(mode,startPosition,loop,reversed) {
+(lib.index = function(mode,startPosition,loop,reversed) {
 if (loop == null) { loop = true; }
 if (reversed == null) { reversed = false; }
 	var props = new Object();
@@ -200,7 +200,7 @@ lib.properties = {
 	color: "#FFFFFF",
 	opacity: 1.00,
 	manifest: [
-		{src:"images/Moving Car Animation_atlas_1.png", id:"Moving Car Animation_atlas_1"}
+		{src:"images/index_atlas_1.png", id:"index_atlas_1"}
 	],
 	preloads: []
 };
